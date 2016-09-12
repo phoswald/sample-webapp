@@ -1,0 +1,4 @@
+FROM jetty-runner
+COPY target/sample-webapp.war /usr/jetty-runner/
+WORKDIR /usr/jetty-runner
+CMD exec java -jar jetty-runner.jar sample-webapp.war
