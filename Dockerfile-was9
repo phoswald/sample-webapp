@@ -1,0 +1,3 @@
+FROM ibmcom/websphere-traditional:9.0.0.2-profile
+COPY target/sample-webapp.war /tmp/
+RUN /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin/wsadmin.sh -conntype NONE -lang jython -c "AdminApp.install('/tmp/sample-webapp.war', '[ -contextroot sample -MapWebModToVH [[ sample-webapp.war sample-webapp.war,WEB-INF/web.xml default_host ]] ]' );AdminConfig.save()"
